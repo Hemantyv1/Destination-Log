@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "https://destination-log-backend.onrender.com";
+
 
 const CreateEntry = () => {
     const [destination, setDestination] = useState("");
@@ -13,7 +15,8 @@ const CreateEntry = () => {
         e.preventDefault();
         setError(null);
         try {
-            const response = await axios.post("http://localhost:5000/info/create", {
+            const response = await axios.post(`${API_BASE_URL}/info/create`, {
+
                 destination,
                 startDate,
                 endDate,
