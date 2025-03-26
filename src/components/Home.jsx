@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { useNavigate } from "react-router-dom";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "https://destination-log-backend.onrender.com";
 
 const containerStyle = {
     width: "100%",
@@ -22,7 +23,8 @@ const Home = () => {
     useEffect(() => {
         const fetchItineraries = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/info/all");
+                const response = await axios.get(`${API_BASE_URL}/info/all`);
+
                 if (response.data.length > 0) {
                     setDestination(response.data[0].destination);
                     const location = await getCoordinates(response.data[0].destination);
