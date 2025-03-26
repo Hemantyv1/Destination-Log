@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => {
       hmr: {
         clientPort: 443,
       },
-      allowedHosts: ['destination-log.onrender.com'], // 👈 Add this line
+      allowedHosts: ['destination-log.onrender.com'], 
     },
     preview: {
       host: '0.0.0.0',
